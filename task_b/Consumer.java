@@ -2,7 +2,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Consumer implements Runnable{
     private final LinkedBlockingQueue<Item> source;
-    private long timeToSleep;
+    private final long timeToSleep;
 
     public Consumer(LinkedBlockingQueue<Item> source, long timeToSleep) {
         this.source = source;

@@ -4,7 +4,7 @@ public class Producer implements Runnable{
     private final LinkedBlockingQueue<Item> target;
     private final Integer itemsToProduce;
     private Integer counter = 1;
-    private long timeToSleep;
+    private final long timeToSleep;
 
     public Producer(LinkedBlockingQueue<Item> target, Integer itemsToProduce, long timeToSleep) {
         this.target = target;
@@ -15,8 +15,7 @@ public class Producer implements Runnable{
     @Override
     public void run() {
         while (counter <= itemsToProduce) {
-            Item item = new Item(counter.equals(itemsToProduce));
-            item.randomFill(counter, 1, 100);
+            Item item = new Item("Item"+counter, counter.equals(itemsToProduce));
             try {
                 Thread.sleep(timeToSleep);
                 target.put(item);
