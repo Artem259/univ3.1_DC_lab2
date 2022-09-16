@@ -9,12 +9,11 @@ public class TaskBag<T> {
 
     public T getNext() {
         synchronized (this) {
-            currentIndex++;
-            return data[currentIndex];
+            return data[currentIndex++];
         }
     }
 
     public boolean isRunOut() {
-        return currentIndex >= (data.length-1);
+        return currentIndex == data.length;
     }
 }
